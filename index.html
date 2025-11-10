@@ -3,58 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>一绘 Vinsript</title>
+  <title>一绘 · Vinsript</title>
   <style>
     /* 页面整体风格 */
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+    }
+
+    /* 背景装饰 */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .circle1 { width: 200px; height: 200px; top: 10%; left: 5%; }
+    .circle2 { width: 300px; height: 300px; top: 50%; left: 70%; }
+    .circle3 { width: 150px; height: 150px; top: 80%; left: 30%; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(15px); }
+    }
+
+    /* 主体容器 */
+    .container {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #74ABE2, #5563DE);
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+      flex: 1;
     }
 
-    /* 标题样式 */
-    h1 {
+    /* 标题区 */
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
       font-size: 3em;
       letter-spacing: 3px;
       animation: glow 2s infinite alternate;
     }
 
-    /* 闪光效果 */
     @keyframes glow {
       from { text-shadow: 0 0 10px #fff; }
       to { text-shadow: 0 0 30px #9cf, 0 0 50px #fff; }
     }
 
-    /* 按钮样式 */
-    button {
+    /* 文案区 */
+    .subtitle {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      line-height: 1.4;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* 按钮区 */
+    .button-area button {
       background: rgba(255,255,255,0.2);
       border: 2px solid #fff;
       color: #fff;
       padding: 12px 30px;
-      margin-top: 30px;
       border-radius: 30px;
       font-size: 1em;
       cursor: pointer;
       transition: all 0.3s;
     }
 
-    button:hover {
+    .button-area button:hover {
       background: #fff;
       color: #5563DE;
       transform: scale(1.05);
     }
+
+    /* 页脚区 */
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 2em; }
+      .subtitle { font-size: 1.2em; }
+      .button-area button { padding: 10px 25px; }
+    }
   </style>
 </head>
 <body>
-  <h1>一绘 · Vinsript</h1>
-  <p>思想在流动，创作在发光 ✨</p>
-  <button onclick="alert('继续创造吧，Vincent！🚀')">点我看看</button>
+  <!-- 背景装饰 -->
+  <div class="bg-circle circle1"></div>
+  <div class="bg-circle circle2"></div>
+  <div class="bg-circle circle3"></div>
+
+  <!-- 主体内容 -->
+  <div class="container">
+    <div class="header">
+      <h1>一绘 · Vinsript</h1>
+    </div>
+
+    <div class="subtitle">
+      思想在流动，创作在发光 ✨
+    </div>
+
+    <div class="button-area">
+      <button onclick="alert('继续创造吧，Vincent！🚀')">点我看看</button>
+    </div>
+    
+    <footer>
+      © 2025 Vinsript. All Rights Reserved.
+    </footer>
+  </div>
 </body>
 </html>
