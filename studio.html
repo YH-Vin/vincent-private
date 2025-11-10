@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>展示台 · Vinsript</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #f6f8fa;
+    }
+    header {
+      background: linear-gradient(135deg, #5563DE, #74ABE2);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5em;
+      letter-spacing: 2px;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .upload-box {
+      border: 2px dashed #5563DE;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      background: white;
+      color: #333;
+      transition: all 0.3s;
+    }
+    .upload-box:hover {
+      background: #eef2ff;
+    }
+    #markdown-output {
+      max-width: 800px;
+      width: 100%;
+      margin-top: 30px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow-x: auto;
+    }
+    button {
+      background: #5563DE;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #3848c7;
+    }
+  </style>
+</head>
+<body>
+  <header>📜 Vinsript Markdown 展示台</header>
+  <main>
+    <div class="upload-box">
+      <p>上传你的 <b>Markdown (.md)</b> 文件，实时预览内容 ✨</p>
+      <input type="file" id="fileInput" accept=".md" />
+      <div style="margin-top:10px;">
+        <button onclick="document.getElementById('fileInput').click()">选择文件</button>
+        <button onclick="window.location.href='index.html'">返回主页</button>
+      </div>
+    </div>
+    <div id="markdown-output"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const output = document.getElementById('markdown-output');
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        output.innerHTML = marked.parse(text);
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>
