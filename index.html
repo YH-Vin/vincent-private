@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>一绘 Vinsript</title>
+  <style>
+    /* 页面整体风格 */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* 标题样式 */
+    h1 {
+      font-size: 3em;
+      letter-spacing: 3px;
+      animation: glow 2s infinite alternate;
+    }
+
+    /* 闪光效果 */
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 30px #9cf, 0 0 50px #fff; }
+    }
+
+    /* 按钮样式 */
+    button {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px 30px;
+      margin-top: 30px;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #5563DE;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>一绘 · Vinsript</h1>
+  <p>思想在流动，创作在发光 ✨</p>
+  <button onclick="alert('继续创造吧，Vincent！🚀')">点我看看</button>
+</body>
+</html>
